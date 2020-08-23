@@ -96,33 +96,6 @@ public class Main {
         boggle.solve();
     }
 
-    private static void recursion(StringBuffer letters, int recNum){
-        System.out.println("Level: " + recNum + " ==> Letters: " + letters.toString());
-        recNum++;
-        if(recNum == 3)
-            return;
-        else if (recNum == 1){
-            letters.append('D');
-            recursion(letters, recNum);
-        }
-        else if(recNum == 2){
-            letters.append('E');
-            recursion(letters, recNum);
-        }
-
-        letters.deleteCharAt(letters.length() - 1);
-    }
-
-    static void recursionCall(){
-        StringBuffer letters = new StringBuffer();
-        letters.append('A');
-        letters.append('B');
-        letters.append('C');
-        int recNum = 0;
-        recursion(letters, recNum);
-        System.out.println(letters.toString());
-    }
-
     static void trieCall(){
         String[] dictionaryArraySmall = {"SHE", "SEE"};
         Trie trie = new Trie();
@@ -136,9 +109,15 @@ public class Main {
         }
     }
 
-    public static void main(String[] args) {
-        //dfsCall();
-        trieCall();
+    static void deckCall(){
+        Deck deck = new Deck();
+        deck.printDeck();
+        deck.shuffle();
+        System.out.println("-------------------------");
+        deck.printDeck();
+    }
 
+    public static void main(String[] args) {
+        deckCall();
     }
 }
