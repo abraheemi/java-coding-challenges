@@ -25,15 +25,12 @@ public class Main {
         System.out.println("Largest Sum = " + hourglass.largestSum(arr));
     }
 
-    private static void java8Example(){
-        final String msg = "Java 8 MSG ";
-        Java8MsgServiceCall firstMsg = myMsg ->
-                System.out.println(msg + myMsg);
-        firstMsg.printJava8Msg("Method call");
-    }
 
-    interface Java8MsgServiceCall {
-        void printJava8Msg(String msg);
+
+    private static void java8LambdaExpressionCall(){
+        final String msg = "Java 8 Message: ";
+        Java8MsgServiceCall firstMsg = (myMsg) -> System.out.println(msg + myMsg);
+        firstMsg.printJava8Msg("Service call");
     }
 
     static void linkedListCall(){
@@ -130,6 +127,6 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        dependencyInjectionCall();
+        java8LambdaExpressionCall();
     }
 }
