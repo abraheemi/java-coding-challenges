@@ -1,5 +1,9 @@
 package com.abraheem;
 
+import com.abraheem.Dependency_Injection.clients.*;
+import com.abraheem.Dependency_Injection.services.*;
+import com.abraheem.Dependency_Injection.interfaces.*;
+
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -117,7 +121,15 @@ public class Main {
         deck.printDeck();
     }
 
+    static void dependencyInjectionCall(){
+        Service service = new ServiceA();
+        Client client = new ClientA(service);
+        client.doSomething();
+        ((ClientA) client).setService(new ServiceB());
+        client.doSomething();
+    }
+
     public static void main(String[] args) {
-        deckCall();
+        dependencyInjectionCall();
     }
 }
