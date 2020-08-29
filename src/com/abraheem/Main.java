@@ -125,6 +125,8 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        java8LambdaExpressionCall();
+        DFSGraph graph = new DFSGraph(4);
+        graph.prePopulateExample1();
+        graph.DFS(2);
     }
 }
