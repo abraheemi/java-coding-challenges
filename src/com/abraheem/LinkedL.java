@@ -1,6 +1,6 @@
 package com.abraheem;
 
-public class LinkedList {
+public class LinkedL {
     private Node head;
 
     public void insert(int val){

@@ -4,9 +4,7 @@ import com.abraheem.Dependency_Injection.clients.*;
 import com.abraheem.Dependency_Injection.services.*;
 import com.abraheem.Dependency_Injection.interfaces.*;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -34,7 +32,7 @@ public class Main {
     }
 
     static void linkedListCall(){
-        LinkedList list = new LinkedList();
+        LinkedL list = new LinkedL();
 
         list.insert(3);
         list.insert(5);
