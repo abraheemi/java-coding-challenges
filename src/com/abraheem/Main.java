@@ -80,7 +80,7 @@ public class Main {
         System.out.println(a);
     }
 
-    static void dfsCall(){
+    static void boggleCall(){
         char[][] boggleBoard = {
                 {'G', 'I', 'Z'},
                 {'U', 'E', 'K'},
@@ -124,9 +124,15 @@ public class Main {
         client.doSomething();
     }
 
+    static void dfsCall(){
+        DFSGraph graph = new DFSGraph(6);
+        //graph.prePopulateExample1();
+        graph.prePopulateExample2();
+        graph.DFSRecursive(3);
+        graph.DFSIterative(3);
+    }
+
     public static void main(String[] args) {
-        DFSGraph graph = new DFSGraph(4);
-        graph.prePopulateExample1();
-        graph.DFS(2);
+        dfsCall();
     }
 }
