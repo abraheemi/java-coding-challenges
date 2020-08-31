@@ -125,11 +125,23 @@ public class Main {
     }
 
     static void dfsCall(){
-        DFSGraph graph = new DFSGraph(6);
+        DFSAdjacencyList graph = new DFSAdjacencyList(6);
+//        DFSAdjacencyMatrix graph2 = new DFSAdjacencyMatrix(5, 4);
+        DFSAdjacencyMatrix graph2 = new DFSAdjacencyMatrix(6, 8);
         //graph.prePopulateExample1();
         graph.prePopulateExample2();
-        graph.DFSRecursive(3);
-        graph.DFSIterative(3);
+//        graph2.prePopulateExample1();
+        graph2.prePopulateExample2();
+
+        System.out.println("DFS recursive using adjacency list:");
+        graph.dfsRecursive(1);
+        System.out.println("DFS recursive using adjacency matrix:");
+        graph2.dfsRecursive(1);
+
+        System.out.println("DFS iterative using adjacency list:");
+        graph.dfsIterative(1);
+        System.out.println("DFS iterative using adjacency matrix:");
+        graph2.dfsIterative(1);
     }
 
     public static void main(String[] args) {

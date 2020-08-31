@@ -3,11 +3,11 @@ package com.abraheem;
 import java.util.LinkedList;
 import java.util.Stack;
 
-public class DFSGraph {
+public class DFSAdjacencyList {
     private int vertices; // Number of vertices
     private LinkedList<Integer>[] adj; // Adjacency List
 
-    public DFSGraph(int v) {
+    public DFSAdjacencyList(int v) {
         vertices = v;
         adj = new LinkedList[v];
         for(int i=0; i<v; ++i){
@@ -42,7 +42,7 @@ public class DFSGraph {
         addEdge(4, 5);
     }
 
-    private void dfsR(int v, boolean[] visited){
+    private void dfsRecursiveHelper(int v, boolean[] visited){
         visited[v] = true;
         // Print current node
         System.out.print(v + " ");
@@ -51,38 +51,43 @@ public class DFSGraph {
         for(int i=0; i<len; ++i){
             int n = adj[v].get(i);
             if(!visited[n])
-                dfsR(n, visited);
+                dfsRecursiveHelper(n, visited);
         }
     }
 
-    public void DFSRecursive(int v){
+    // Recursive DFS using an adjacency list
+    public void dfsRecursive(int start){
         // v is the starting node
         boolean[] visited = new boolean[vertices];
-        dfsR(v, visited);
+        dfsRecursiveHelper(start, visited);
         System.out.println();
     }
 
-    public void DFSIterative(int currentV){
-        // Initially, currentV is the starting node
+    // Iterative DFS using an adjacency list
+    public void dfsIterative(int start){
         Stack<Integer> stack = new Stack<>();
         boolean[] visited = new boolean[vertices];
-        stack.push(currentV);
+        stack.push(start);
+
         while(!stack.empty()){
-            currentV = stack.peek();
-            stack.pop();
+            int current = stack.pop();
 
-            if(visited[currentV])
+            if(visited[current])
                 continue;
-            visited[currentV] = true;
-            System.out.print(currentV + " ");
 
-            int len = adj[currentV].size();
-            for(int i=0; i<len; ++i){
-                int v = adj[currentV].get(i);
+            visited[current] = true;
+            System.out.print(current + " ");
+
+            int len = adj[current].size();
+            // Iterating backwards gives same output order as recursive method
+            for(int i=len-1; i>=0; --i){
+//            for(int i=0; i<len; ++i){
+                int v = adj[current].get(i);
                 if(!visited[v])
                     stack.push(v);
             }
         }
+        System.out.println();
     }
 
 }
