@@ -1,11 +1,13 @@
 package com.abraheem;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Stack;
 
 public class DFSAdjacencyList {
-    private int vertices; // Number of vertices
-    private LinkedList<Integer>[] adj; // Adjacency List
+    private final int vertices; // Number of vertices
+    private final LinkedList<Integer>[] adj; // Adjacency List
 
     public DFSAdjacencyList(int v) {
         vertices = v;
@@ -16,55 +18,134 @@ public class DFSAdjacencyList {
     }
 
     public void addEdge(int vSrc, int vDest){
-        // Add forward edge
         adj[vSrc].add(vDest);
     }
 
-    void prePopulateExample1(){
+    public void addEdgeBidirectional(int vSrc, int vDest){
+        // Add forward edge
+        adj[vSrc].add(vDest);
+        adj[vDest].add(vSrc);
+    }
+
+    void graph1(boolean directed){
         // Image example available in images/dfs_example_1.png
-        addEdge(0, 1);
-        addEdge(0, 2);
-        addEdge(1, 2);
-        addEdge(2, 0);
-        addEdge(2, 3);
-        addEdge(3, 3);
+        // Number of vertices: 5
+        if(directed) {
+            addEdge(0, 1);
+            addEdge(0, 2);
+            addEdge(0, 3);
+            addEdge(0, 4);
+        }
+        else {
+            addEdgeBidirectional(0, 1);
+            addEdgeBidirectional(0, 2);
+            addEdgeBidirectional(0, 3);
+            addEdgeBidirectional(0, 4);
+        }
     }
 
-    void prePopulateExample2() {
-        addEdge(0, 1);
-        addEdge(0, 2);
-        addEdge(1, 2);
-        addEdge(1, 3);
-        addEdge(3, 4);
-        addEdge(2, 3);
-        addEdge(4, 0);
-        addEdge(4, 1);
-        addEdge(4, 5);
+    void graph2(boolean directed) {
+        // Image example available in images/dfs_example_2.png
+        // Number of vertices: 12
+        if(directed) {
+            addEdge(0, 1);
+            addEdge(0, 2);
+            addEdge(0, 3);
+            addEdge(1, 4);
+            addEdge(1, 5);
+            addEdge(4, 8);
+            addEdge(4, 9);
+            addEdge(3, 6);
+            addEdge(3, 7);
+            addEdge(6, 10);
+            addEdge(6, 11);
+        }
+        else {
+            addEdgeBidirectional(0, 1);
+            addEdgeBidirectional(0, 2);
+            addEdgeBidirectional(0, 3);
+            addEdgeBidirectional(1, 4);
+            addEdgeBidirectional(1, 5);
+            addEdgeBidirectional(4, 8);
+            addEdgeBidirectional(4, 9);
+            addEdgeBidirectional(3, 6);
+            addEdgeBidirectional(3, 7);
+            addEdgeBidirectional(6, 10);
+            addEdgeBidirectional(6, 11);
+        }
     }
 
-    private void dfsRecursiveHelper(int v, boolean[] visited){
-        visited[v] = true;
-        // Print current node
-        System.out.print(v + " ");
+    void graph3(boolean directed){
+        // Image example available in images/dfs_example_3.png
+        // Number of vertices: 4
+        if(directed) {
+            addEdge(0, 1);
+            addEdge(0, 2);
+            addEdge(1, 2);
+            addEdge(2, 0);
+            addEdge(2, 3);
+            addEdge(3, 3);
+        }
+        else {
+            addEdgeBidirectional(0, 1);
+            addEdgeBidirectional(0, 2);
+            addEdgeBidirectional(1, 2);
+            addEdgeBidirectional(2, 3);
+            addEdgeBidirectional(3, 3);
+        }
+    }
 
-        int len = adj[v].size();
+    void graph4(boolean directed) {
+        // Image example available in images/dfs_example_4.png
+        // Number of vertices: 6
+        if(directed) {
+            addEdge(0, 1);
+            addEdge(0, 2);
+            addEdge(1, 2);
+            addEdge(1, 3);
+            addEdge(3, 4);
+            addEdge(2, 3);
+            addEdge(4, 0);
+            addEdge(4, 1);
+            addEdge(4, 5);
+        }
+        else {
+            addEdgeBidirectional(0, 1);
+            addEdgeBidirectional(0, 2);
+            addEdgeBidirectional(1, 2);
+            addEdgeBidirectional(1, 3);
+            addEdgeBidirectional(3, 4);
+            addEdgeBidirectional(2, 3);
+            addEdgeBidirectional(4, 0);
+            addEdgeBidirectional(4, 1);
+            addEdgeBidirectional(4, 5);
+        }
+    }
+
+    private void dfsRecursiveHelper(int current, boolean[] visited, List<Integer> output){
+        visited[current] = true;
+        //System.out.print(current + " ");
+        output.add(current);
+
+        int len = adj[current].size();
         for(int i=0; i<len; ++i){
-            int n = adj[v].get(i);
-            if(!visited[n])
-                dfsRecursiveHelper(n, visited);
+            int v = adj[current].get(i);
+            if(!visited[v])
+                dfsRecursiveHelper(v, visited, output);
         }
     }
 
     // Recursive DFS using an adjacency list
-    public void dfsRecursive(int start){
-        // v is the starting node
+    public List<Integer> dfsRecursive(int start){
+        List<Integer> output = new ArrayList<>();
         boolean[] visited = new boolean[vertices];
-        dfsRecursiveHelper(start, visited);
-        System.out.println();
+        dfsRecursiveHelper(start, visited, output);
+        return output;
     }
 
     // Iterative DFS using an adjacency list
-    public void dfsIterative(int start){
+    public List<Integer> dfsIterative(int start){
+        List<Integer> output = new ArrayList<>();
         Stack<Integer> stack = new Stack<>();
         boolean[] visited = new boolean[vertices];
         stack.push(start);
@@ -76,7 +157,8 @@ public class DFSAdjacencyList {
                 continue;
 
             visited[current] = true;
-            System.out.print(current + " ");
+            //System.out.print(current + " ");
+            output.add(current);
 
             int len = adj[current].size();
             // Iterating backwards gives same output order as recursive method
@@ -87,7 +169,7 @@ public class DFSAdjacencyList {
                     stack.push(v);
             }
         }
-        System.out.println();
+        return output;
     }
 
 }
