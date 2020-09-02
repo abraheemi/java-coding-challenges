@@ -6,22 +6,20 @@ import java.util.Stack;
 
 public class DFSAdjacencyMatrix {
     private final int vertices; // No. of vertices
-    //private int edges; // No. of edges
     private final int[][] adj;
 
     DFSAdjacencyMatrix(int v){
         vertices = v;
-        //edges = e;
         adj = new int[v][v];
     }
 
-    public void addEdge(int start, int e){
-        adj[start][e] = 1;
+    public void addEdge(int vSrc, int vDst){
+        adj[vSrc][vDst] = 1;
     }
 
-    public void addEdgeBidirectional(int start, int e){
-        adj[start][e] = 1;
-        adj[e][start] = 1;
+    public void addEdgeBidirectional(int vSrc, int vDst){
+        adj[vSrc][vDst] = 1;
+        adj[vDst][vSrc] = 1;
     }
 
     void graph1(boolean directed){

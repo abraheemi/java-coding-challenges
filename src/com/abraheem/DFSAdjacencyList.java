@@ -17,14 +17,13 @@ public class DFSAdjacencyList {
         }
     }
 
-    public void addEdge(int vSrc, int vDest){
-        adj[vSrc].add(vDest);
+    public void addEdge(int vSrc, int vDst){
+        adj[vSrc].add(vDst);
     }
 
-    public void addEdgeBidirectional(int vSrc, int vDest){
-        // Add forward edge
-        adj[vSrc].add(vDest);
-        adj[vDest].add(vSrc);
+    public void addEdgeBidirectional(int vSrc, int vDst){
+        adj[vSrc].add(vDst);
+        adj[vDst].add(vSrc);
     }
 
     void graph1(boolean directed){
@@ -95,6 +94,7 @@ public class DFSAdjacencyList {
         }
     }
 
+    // 5 4 3 1 0 2
     void graph4(boolean directed) {
         // Image example available in images/dfs_example_4.png
         // Number of vertices: 6
