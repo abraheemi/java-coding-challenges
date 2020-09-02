@@ -21,76 +21,73 @@ public class DFSAdjacencyList {
         adj[vSrc].add(vDst);
     }
 
-    public void addEdgeBidirectional(int vSrc, int vDst){
-        adj[vSrc].add(vDst);
-        adj[vDst].add(vSrc);
-    }
+//    public void addEdgeBidirectional(int vSrc, int vDst){
+//        adj[vSrc].add(vDst);
+//        adj[vDst].add(vSrc);
+//    }
 
     void graph1(boolean directed){
         // Image example available in images/dfs_example_1.png
         // Number of vertices: 5
-        if(directed) {
-            addEdge(0, 1);
-            addEdge(0, 2);
-            addEdge(0, 3);
-            addEdge(0, 4);
-        }
-        else {
-            addEdgeBidirectional(0, 1);
-            addEdgeBidirectional(0, 2);
-            addEdgeBidirectional(0, 3);
-            addEdgeBidirectional(0, 4);
+        addEdge(0, 1);
+        addEdge(0, 2);
+        addEdge(0, 3);
+        addEdge(0, 4);
+
+        if(!directed)  {
+            addEdge(1, 0);
+            addEdge(2, 0);
+            addEdge(3, 0);
+            addEdge(4, 0);
         }
     }
 
     void graph2(boolean directed) {
         // Image example available in images/dfs_example_2.png
         // Number of vertices: 12
-        if(directed) {
-            addEdge(0, 1);
-            addEdge(0, 2);
-            addEdge(0, 3);
-            addEdge(1, 4);
-            addEdge(1, 5);
-            addEdge(4, 8);
-            addEdge(4, 9);
-            addEdge(3, 6);
-            addEdge(3, 7);
-            addEdge(6, 10);
-            addEdge(6, 11);
-        }
-        else {
-            addEdgeBidirectional(0, 1);
-            addEdgeBidirectional(0, 2);
-            addEdgeBidirectional(0, 3);
-            addEdgeBidirectional(1, 4);
-            addEdgeBidirectional(1, 5);
-            addEdgeBidirectional(4, 8);
-            addEdgeBidirectional(4, 9);
-            addEdgeBidirectional(3, 6);
-            addEdgeBidirectional(3, 7);
-            addEdgeBidirectional(6, 10);
-            addEdgeBidirectional(6, 11);
+        addEdge(0, 1);
+        addEdge(0, 2);
+        addEdge(0, 3);
+        addEdge(1, 4);
+        addEdge(1, 5);
+        addEdge(4, 8);
+        addEdge(4, 9);
+        addEdge(3, 6);
+        addEdge(3, 7);
+        addEdge(6, 10);
+        addEdge(6, 11);
+
+        if(!directed) {
+            addEdge(1, 0);
+            addEdge(2, 0);
+            addEdge(3, 0);
+            addEdge(4, 1);
+            addEdge(5, 1);
+            addEdge(8, 4);
+            addEdge(9, 4);
+            addEdge(6, 3);
+            addEdge(7, 3);
+            addEdge(10, 6);
+            addEdge(11, 6);
         }
     }
 
     void graph3(boolean directed){
         // Image example available in images/dfs_example_3.png
         // Number of vertices: 4
-        if(directed) {
-            addEdge(0, 1);
-            addEdge(0, 2);
-            addEdge(1, 2);
+        addEdge(0, 1);
+        addEdge(0, 2);
+        addEdge(1, 2);
+        addEdge(2, 0);
+        addEdge(2, 3);
+        addEdge(3, 3);
+
+        if(!directed) {
+            addEdge(1, 0);
             addEdge(2, 0);
-            addEdge(2, 3);
+            addEdge(2, 1);
+            addEdge(3, 2);
             addEdge(3, 3);
-        }
-        else {
-            addEdgeBidirectional(0, 1);
-            addEdgeBidirectional(0, 2);
-            addEdgeBidirectional(1, 2);
-            addEdgeBidirectional(2, 3);
-            addEdgeBidirectional(3, 3);
         }
     }
 
@@ -98,7 +95,6 @@ public class DFSAdjacencyList {
     void graph4(boolean directed) {
         // Image example available in images/dfs_example_4.png
         // Number of vertices: 6
-        if(directed) {
             addEdge(0, 1);
             addEdge(0, 2);
             addEdge(1, 2);
@@ -108,17 +104,17 @@ public class DFSAdjacencyList {
             addEdge(4, 0);
             addEdge(4, 1);
             addEdge(4, 5);
-        }
-        else {
-            addEdgeBidirectional(0, 1);
-            addEdgeBidirectional(0, 2);
-            addEdgeBidirectional(1, 2);
-            addEdgeBidirectional(1, 3);
-            addEdgeBidirectional(3, 4);
-            addEdgeBidirectional(2, 3);
-            addEdgeBidirectional(4, 0);
-            addEdgeBidirectional(4, 1);
-            addEdgeBidirectional(4, 5);
+            
+        if(!directed) {
+            addEdge(1, 0);
+            addEdge(2, 0);
+            addEdge(2, 1);
+            addEdge(3, 1);
+            addEdge(4, 3);
+            addEdge(3, 2);
+            addEdge(0, 4);
+            addEdge(1, 4);
+            addEdge(5, 4);
         }
     }
 

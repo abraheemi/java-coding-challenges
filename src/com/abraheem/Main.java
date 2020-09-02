@@ -131,6 +131,9 @@ public class Main {
         graph1.graph4(false);
         graph2.graph4(false);
 
+//        graph1.graph3(false);
+//        graph2.graph3(false);
+
         System.out.println("DFS recursive using adjacency list:");
         System.out.println(graph1.dfsRecursive(5));
         System.out.println("DFS iterative using adjacency list:");
