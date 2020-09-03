@@ -104,7 +104,7 @@ public class DFSAdjacencyList {
             addEdge(4, 0);
             addEdge(4, 1);
             addEdge(4, 5);
-            
+
         if(!directed) {
             addEdge(1, 0);
             addEdge(2, 0);
