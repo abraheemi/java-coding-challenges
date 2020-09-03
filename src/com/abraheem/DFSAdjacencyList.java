@@ -9,10 +9,10 @@ public class DFSAdjacencyList {
     private final int vertices; // Number of vertices
     private final LinkedList<Integer>[] adj; // Adjacency List
 
-    public DFSAdjacencyList(int v) {
-        vertices = v;
-        adj = new LinkedList[v];
-        for(int i=0; i<v; ++i){
+    public DFSAdjacencyList(int numOfVertices) {
+        vertices = numOfVertices;
+        adj = new LinkedList[numOfVertices];
+        for(int i=0; i<numOfVertices; ++i){
             adj[i] = new LinkedList<Integer>();
         }
     }

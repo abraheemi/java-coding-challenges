@@ -145,7 +145,15 @@ public class Main {
 //        System.out.println(graph2.dfsIterative(0));
     }
 
+    static void bfsCall(){
+        BFSAdjacencyList bfsGraph = new BFSAdjacencyList(12);
+        bfsGraph.graph2(false);
+        System.out.println("BFS using adjacency list: ");
+        System.out.println(bfsGraph.bfs(3));
+
+    }
+
     public static void main(String[] args) {
-        dfsCall();
+        bfsCall();
     }
 }

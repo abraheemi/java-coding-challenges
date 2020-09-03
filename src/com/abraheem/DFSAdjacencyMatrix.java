@@ -8,9 +8,9 @@ public class DFSAdjacencyMatrix {
     private final int vertices; // No. of vertices
     private final int[][] adj;
 
-    DFSAdjacencyMatrix(int v){
-        vertices = v;
-        adj = new int[v][v];
+    DFSAdjacencyMatrix(int numOfVertices){
+        vertices = numOfVertices;
+        adj = new int[numOfVertices][numOfVertices];
     }
 
     public void addEdge(int vSrc, int vDst){
