@@ -147,10 +147,11 @@ public class Main {
 
     static void bfsCall(){
         BFSAdjacencyList bfsGraph = new BFSAdjacencyList(12);
+        BFSAdjacencyList bfsGraphUndirected = new BFSAdjacencyList(6);
         bfsGraph.graph2(false);
+        bfsGraphUndirected.graph4(false);
         System.out.println("BFS using adjacency list: ");
-        System.out.println(bfsGraph.bfs(3));
-
+        System.out.println(bfsGraphUndirected.bfs(1));
     }
 
     public static void main(String[] args) {
