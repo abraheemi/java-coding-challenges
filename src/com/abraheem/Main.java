@@ -5,6 +5,7 @@ import com.abraheem.Dependency_Injection.services.*;
 import com.abraheem.Dependency_Injection.interfaces.*;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -154,7 +155,25 @@ public class Main {
         System.out.println(bfsGraphUndirected.bfs(1));
     }
 
+    static void dijstraCall(){
+        DijkstraAdjacencyList d = new DijkstraAdjacencyList(6);
+        d.addEdge(0, 1, 9);
+        d.addEdge(0, 2, 6);
+        d.addEdge(0, 3, 12);
+        d.addEdge(0, 4, 3);
+        d.addEdge(2, 1, 2);
+        d.addEdge(2, 3, 4);
+        d.addEdge(3, 5, 1);
+        d.addEdge(4, 5, 12);
+        int start = 2;
+        System.out.println("Shortest path from node " + start);
+        int[] dist = d.shortestPath(start);
+        for (int i=0; i< dist.length; ++i){
+            System.out.println(start + " --> " + i + " = " + dist[i]);
+        }
+    }
+
     public static void main(String[] args) {
-        bfsCall();
+        dijstraCall();
     }
 }
