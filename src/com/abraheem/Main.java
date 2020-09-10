@@ -154,7 +154,7 @@ public class Main {
         System.out.println(bfsGraphUndirected.bfs(1));
     }
 
-    static void DijkstraAdjacencyCall(){
+    static void DijkstraAdjacencyListCall(){
         DijkstraAdjacencyList d = new DijkstraAdjacencyList(6);
         d.addEdge(0, 1, 9);
         d.addEdge(0, 2, 6);
@@ -197,6 +197,15 @@ public class Main {
         d.addEdge(2, 3, 4);
         d.addEdge(3, 5, 1);
         d.addEdge(4, 5, 12);
+
+//        d.addEdge(1, 0, 9);
+//        d.addEdge(2, 0, 6);
+//        d.addEdge(3, 0, 12);
+//        d.addEdge(4, 0, 3);
+//        d.addEdge(1, 2, 2);
+//        d.addEdge(3, 2, 4);
+//        d.addEdge(5, 3, 1);
+//        d.addEdge(5, 4, 12);
         int start = 2;
         System.out.println("Shortest path from node " + start);
         int[] dist = d.shortestPath(start);
@@ -211,5 +220,6 @@ public class Main {
 
     public static void main(String[] args) {
         DijkstraMatrixCall();
+        //DijkstraAdjacencyListCall();
     }
 }

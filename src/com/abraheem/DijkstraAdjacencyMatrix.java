@@ -24,6 +24,19 @@ public class DijkstraAdjacencyMatrix {
         adj[vSrc][vDst] = weight;
     }
 
+    private int minDist(){
+        int min = Integer.MAX_VALUE;
+        int minIndex = -1;
+
+        for(int i=0; i<vertices; ++i){
+            if(!visited.contains(i) && dist[i] <= min){
+                min = dist[i];
+                minIndex = i;
+            }
+        }
+        return minIndex;
+    }
+
     public int[] shortestPath(int start){
         // All nodes start with dist = infinity from start node
         for(int i=0; i<vertices; ++i)
@@ -31,17 +44,30 @@ public class DijkstraAdjacencyMatrix {
 
         // Add start node to priority queue.
         // Weight starts as 0
-        pQueue.add(start);
+        //pQueue.add(start);
         dist[start] = 0;
 
-        // Loop until all vertices are visited
-        while (!pQueue.isEmpty()){
-            // Remove the min distance node from priority queue
-            int minVal = pQueue.poll();
-            // Mark node as visited
-            visited.add(minVal);
-            // Now process all neighbor nodes from current node
-            shortestPathHelper(minVal);
+        // Traverse all vertices
+        for(int j=0; j<vertices; ++j) {
+
+            int md = minDist();
+            visited.add(md);
+            // Update dist value of adjacent vertices
+            for (int i = 0; i < vertices; ++i) {
+
+                // Update dist[] only if:
+                // 1. current node is not visited
+                // 2. matrix position is not empty (0)
+                // 3. current distance is not Infinite (not reachable)
+                // 4. i through md is smaller than current value of dist[i]
+                int cost = adj[md][i];
+                if (!visited.contains(i) &&
+                        cost != 0 &&
+                        dist[md] != Integer.MAX_VALUE &&
+                        dist[md] + cost < dist[i]) {
+                    dist[i] = dist[md] + cost;
+                }
+            }
         }
         return dist;
     }
@@ -55,7 +81,7 @@ public class DijkstraAdjacencyMatrix {
         for(int i=0; i<len; ++i){
             int cost = adj[current][i];
             // If current node is not visited
-            if(!visited.contains(current)){
+            if(adj[current][i] != 0 && !visited.contains(i)){
                 newDist = dist[current] + cost;
                 // If new distance is lower in cost,
                 // make it current distance
