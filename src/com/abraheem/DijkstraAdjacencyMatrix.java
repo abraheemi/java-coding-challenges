@@ -1,28 +1,27 @@
 package com.abraheem;
 
-import java.util.*;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.PriorityQueue;
+import java.util.Set;
 
-public class DijkstraAdjacencyList {
+public class DijkstraAdjacencyMatrix {
     private final int vertices; // Number of vertices
-    private final LinkedList<Node>[] adj; // Adjacency List
+    private int[][] adj; // Adjacency List
     private Set<Integer> visited;
-    PriorityQueue<Node> pQueue;
+    PriorityQueue<Integer> pQueue;
     int[] dist;
 
-    public DijkstraAdjacencyList(int numOfVertices) {
+    public DijkstraAdjacencyMatrix(int numOfVertices) {
         vertices = numOfVertices;
         dist = new int[numOfVertices];
         visited = new HashSet<Integer>();
-        pQueue = new PriorityQueue<Node>(numOfVertices, new Node());
-
-        adj = new LinkedList[numOfVertices];
-        for(int i=0; i<numOfVertices; ++i){
-            adj[i] = new LinkedList<Node>();
-        }
+        pQueue = new PriorityQueue<Integer>(numOfVertices);
+        adj = new int[numOfVertices][numOfVertices];
     }
 
     public void addEdge(int vSrc, int vDst, int weight){
-        adj[vSrc].add(new Node(vDst, weight));
+        adj[vSrc][vDst] = weight;
     }
 
     public int[] shortestPath(int start){
@@ -32,13 +31,13 @@ public class DijkstraAdjacencyList {
 
         // Add start node to priority queue.
         // Weight starts as 0
-        pQueue.add(new Node(start, 0));
+        pQueue.add(start);
         dist[start] = 0;
 
         // Loop until all vertices are visited
         while (!pQueue.isEmpty()){
             // Remove the min distance node from priority queue
-            int minVal = pQueue.poll().node;
+            int minVal = pQueue.poll();
             // Mark node as visited
             visited.add(minVal);
             // Now process all neighbor nodes from current node
@@ -50,20 +49,20 @@ public class DijkstraAdjacencyList {
     private void shortestPathHelper(int current){
         //int edgeDist = -1;
         int newDist = -1;
-        int len = adj[current].size();
+        int len = adj[current].length;
 
         // Traverse all neighbors of current
         for(int i=0; i<len; ++i){
-            Node node = adj[current].get(i);
+            int cost = adj[current][i];
             // If current node is not visited
-            if(!visited.contains(node.node)){
-                newDist = dist[current] + node.cost;
+            if(!visited.contains(current)){
+                newDist = dist[current] + cost;
                 // If new distance is lower in cost,
                 // make it current distance
-                if(newDist < dist[node.node]) {
-                    dist[node.node] = newDist;
+                if(newDist < dist[current]) {
+                    dist[current] = newDist;
                     // Finally, add current node to priority queue
-                    pQueue.add(new Node(node.node, dist[node.node]));
+                    pQueue.add(current);
                 }
             }
         }

@@ -5,7 +5,6 @@ import com.abraheem.Dependency_Injection.services.*;
 import com.abraheem.Dependency_Injection.interfaces.*;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -155,7 +154,7 @@ public class Main {
         System.out.println(bfsGraphUndirected.bfs(1));
     }
 
-    static void dijstraCall(){
+    static void DijkstraAdjacencyCall(){
         DijkstraAdjacencyList d = new DijkstraAdjacencyList(6);
         d.addEdge(0, 1, 9);
         d.addEdge(0, 2, 6);
@@ -169,11 +168,48 @@ public class Main {
         System.out.println("Shortest path from node " + start);
         int[] dist = d.shortestPath(start);
         for (int i=0; i< dist.length; ++i){
-            System.out.println(start + " --> " + i + " = " + dist[i]);
+            System.out.print(start + " --> " + i + " = ");
+            if(dist[i] == Integer.MAX_VALUE)
+                System.out.println("Not Reachable");
+            else
+                System.out.println(dist[i]);
+        }
+    }
+
+    static void DijkstraMatrixCall(){
+        int graph[][] = new int[][] {
+                { 0, 4, 0, 0, 0, 0, 0, 8, 0 },
+                { 4, 0, 8, 0, 0, 0, 0, 11, 0 },
+                { 0, 8, 0, 7, 0, 4, 0, 0, 2 },
+                { 0, 0, 7, 0, 9, 14, 0, 0, 0 },
+                { 0, 0, 0, 9, 0, 10, 0, 0, 0 },
+                { 0, 0, 4, 14, 10, 0, 2, 0, 0 },
+                { 0, 0, 0, 0, 0, 2, 0, 1, 6 },
+                { 8, 11, 0, 0, 0, 0, 1, 0, 7 },
+                { 0, 0, 2, 0, 0, 0, 6, 7, 0 } };
+
+        DijkstraAdjacencyMatrix d = new DijkstraAdjacencyMatrix(6);
+        d.addEdge(0, 1, 9);
+        d.addEdge(0, 2, 6);
+        d.addEdge(0, 3, 12);
+        d.addEdge(0, 4, 3);
+        d.addEdge(2, 1, 2);
+        d.addEdge(2, 3, 4);
+        d.addEdge(3, 5, 1);
+        d.addEdge(4, 5, 12);
+        int start = 2;
+        System.out.println("Shortest path from node " + start);
+        int[] dist = d.shortestPath(start);
+        for (int i=0; i< dist.length; ++i){
+            System.out.print(start + " --> " + i + " = ");
+            if(dist[i] == Integer.MAX_VALUE)
+                System.out.println("Not Reachable");
+            else
+                System.out.println(dist[i]);
         }
     }
 
     public static void main(String[] args) {
-        dijstraCall();
+        DijkstraMatrixCall();
     }
 }

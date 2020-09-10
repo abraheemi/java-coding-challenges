@@ -21,12 +21,7 @@ public class DFSAdjacencyList {
         adj[vSrc].add(vDst);
     }
 
-//    public void addEdgeBidirectional(int vSrc, int vDst){
-//        adj[vSrc].add(vDst);
-//        adj[vDst].add(vSrc);
-//    }
-
-    void graph1(boolean directed){
+    void graph1(boolean isDirected){
         // Image example available in images/dfs_example_1.png
         // Number of vertices: 5
         addEdge(0, 1);
@@ -34,7 +29,7 @@ public class DFSAdjacencyList {
         addEdge(0, 3);
         addEdge(0, 4);
 
-        if(!directed)  {
+        if(!isDirected)  {
             addEdge(1, 0);
             addEdge(2, 0);
             addEdge(3, 0);
@@ -42,7 +37,7 @@ public class DFSAdjacencyList {
         }
     }
 
-    void graph2(boolean directed) {
+    void graph2(boolean isDirected) {
         // Image example available in images/dfs_example_2.png
         // Number of vertices: 12
         addEdge(0, 1);
@@ -57,7 +52,7 @@ public class DFSAdjacencyList {
         addEdge(6, 10);
         addEdge(6, 11);
 
-        if(!directed) {
+        if(!isDirected) {
             addEdge(1, 0);
             addEdge(2, 0);
             addEdge(3, 0);
@@ -72,7 +67,7 @@ public class DFSAdjacencyList {
         }
     }
 
-    void graph3(boolean directed){
+    void graph3(boolean isDirected){
         // Image example available in images/dfs_example_3.png
         // Number of vertices: 4
         addEdge(0, 1);
@@ -82,7 +77,7 @@ public class DFSAdjacencyList {
         addEdge(2, 3);
         addEdge(3, 3);
 
-        if(!directed) {
+        if(!isDirected) {
             addEdge(1, 0);
             addEdge(2, 0);
             addEdge(2, 1);
@@ -92,7 +87,7 @@ public class DFSAdjacencyList {
     }
 
     // 5 4 3 1 0 2
-    void graph4(boolean directed) {
+    void graph4(boolean isDirected) {
         // Image example available in images/dfs_example_4.png
         // Number of vertices: 6
             addEdge(0, 1);
@@ -105,7 +100,7 @@ public class DFSAdjacencyList {
             addEdge(4, 1);
             addEdge(4, 5);
 
-        if(!directed) {
+        if(!isDirected) {
             addEdge(1, 0);
             addEdge(2, 0);
             addEdge(2, 1);

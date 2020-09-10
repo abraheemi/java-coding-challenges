@@ -20,10 +20,10 @@ public class BFSAdjacencyList {
         adj[vSrc].add(vDst);
     }
 
-    void graph2(boolean directed) {
+    void graph2(boolean isDirected) {
         // Image example available in images/dfs_example_2.png
         // Number of vertices: 12
-        if(directed) {
+        if(isDirected) {
             addEdge(0, 1);
             addEdge(0, 2);
             addEdge(0, 3);
@@ -62,10 +62,10 @@ public class BFSAdjacencyList {
         }
     }
 
-    void graph4(boolean directed) {
+    void graph4(boolean isDirected) {
         // Image example available in images/dfs_example_4.png
         // Number of vertices: 6
-        if(directed) {
+        if(isDirected) {
             addEdge(0, 1);
             addEdge(0, 2);
             addEdge(1, 2);

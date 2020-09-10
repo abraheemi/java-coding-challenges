@@ -22,10 +22,10 @@ public class DFSAdjacencyMatrix {
         adj[vDst][vSrc] = 1;
     }
 
-    void graph1(boolean directed){
+    void graph1(boolean isDirected){
         // Image example available in images/dfs_example_1.png
         // Number of vertices: 5
-        if(directed) {
+        if(isDirected) {
             addEdge(0, 1);
             addEdge(0, 2);
             addEdge(0, 3);
@@ -39,10 +39,10 @@ public class DFSAdjacencyMatrix {
         }
     }
 
-    void graph2(boolean directed) {
+    void graph2(boolean isDirected) {
         // Image example available in images/dfs_example_2.png
         // Number of vertices: 12
-        if(directed) {
+        if(isDirected) {
             addEdge(0, 1);
             addEdge(0, 2);
             addEdge(0, 3);
@@ -70,10 +70,10 @@ public class DFSAdjacencyMatrix {
         }
     }
 
-    void graph3(boolean directed){
+    void graph3(boolean isDirected){
         // Image example available in images/dfs_example_3.png
         // Number of vertices: 4
-        if(directed) {
+        if(isDirected) {
             addEdge(0, 1);
             addEdge(0, 2);
             addEdge(1, 2);
@@ -90,10 +90,10 @@ public class DFSAdjacencyMatrix {
         }
     }
 
-    void graph4(boolean directed) {
+    void graph4(boolean isDirected) {
         // Image example available in images/dfs_example_4.png
         // Number of vertices: 6
-        if(directed) {
+        if(isDirected) {
             addEdge(0, 1);
             addEdge(0, 2);
             addEdge(1, 2);
