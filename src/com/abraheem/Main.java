@@ -5,6 +5,7 @@ import com.abraheem.Dependency_Injection.services.*;
 import com.abraheem.Dependency_Injection.interfaces.*;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -218,8 +219,17 @@ public class Main {
         }
     }
 
+    static void sortCall(){
+        int[] arr = {6,9,1,5,10,3,7};
+
+//        MergeSort.sort(arr);
+        QuickSort.sort(arr);
+        System.out.println(Arrays.toString(arr));
+    }
+
     public static void main(String[] args) {
-        DijkstraMatrixCall();
-        //DijkstraAdjacencyListCall();
+//        DijkstraMatrixCall();
+//        DijkstraAdjacencyListCall();
+        sortCall();
     }
 }
