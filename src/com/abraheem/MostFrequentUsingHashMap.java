@@ -13,16 +13,16 @@ import java.util.*;
  * well : 3
  * your : 3
  */
-public class MostFrequent {
+public class MostFrequentUsingHashMap {
     File file;
     HashMap<String, Integer> map = new HashMap<>();
 
-    public MostFrequent(String filename){
+    public MostFrequentUsingHashMap(String filename){
         file = new File("src\\com\\abraheem\\input\\" + filename);
     }
 
     public void findMostFrequentWords(int k){
-        if(!buildHashMap(k)){
+        if(!buildHashMap()){
             System.out.println("Could not read file");
             return;
         }
@@ -36,11 +36,9 @@ public class MostFrequent {
         }
         // Prints all hashmap using Java 8 lambda expression
         //sortedMap.forEach((key, value) -> System.out.println(key + ": " + value));
-
-
     }
 
-    private boolean buildHashMap(int k) {
+    private boolean buildHashMap() {
         try {
             Scanner scanner = new Scanner(file);
             //HashMap<String, Integer> map = new HashMap<>();
@@ -60,12 +58,12 @@ public class MostFrequent {
         }
     }
 
-    HashMap<String, Integer> sortByValues(){
+    private HashMap<String, Integer> sortByValues(){
         List<Map.Entry<String, Integer>> list =
-                new LinkedList<Map.Entry<String, Integer>>(map.entrySet());
-        Collections.sort(list, (o1, o2) -> (o2.getValue()).compareTo(o1.getValue()));
+                new LinkedList<>(map.entrySet());
+        list.sort((o1, o2) -> (o2.getValue()).compareTo(o1.getValue()));
         // Put data from sorted list to hashmap
-        HashMap<String, Integer> sortedMap = new LinkedHashMap<String, Integer>();
+        HashMap<String, Integer> sortedMap = new LinkedHashMap<>();
         for (Map.Entry<String, Integer> aa : list) {
             sortedMap.put(aa.getKey(), aa.getValue());
         }

@@ -229,7 +229,7 @@ public class Main {
 
     static void mostFrequentCall() {
         int k = 4; // k most frequent items
-        MostFrequent mostFrequent = new MostFrequent("file.txt");
+        MostFrequentUsingHashMap mostFrequent = new MostFrequentUsingHashMap("file.txt");
         mostFrequent.findMostFrequentWords(k);
 
     }
