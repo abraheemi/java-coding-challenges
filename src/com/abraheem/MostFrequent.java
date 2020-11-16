@@ -27,8 +27,15 @@ public class MostFrequent {
             return;
         }
         Map<String, Integer> sortedMap = sortByValues();
-        
-        sortedMap.forEach((key, value) -> System.out.println(key + ": " + value));
+        int i=0;
+        for (String key: sortedMap.keySet()) {
+            if(i == k)
+                break;
+            System.out.println(key + " " + sortedMap.get(key));
+            i++;
+        }
+        // Prints all hashmap using Java 8 lambda expression
+        //sortedMap.forEach((key, value) -> System.out.println(key + ": " + value));
 
 
     }
