@@ -227,9 +227,17 @@ public class Main {
         System.out.println(Arrays.toString(arr));
     }
 
+    static void mostFrequentCall() {
+        int k = 4; // k most frequent items
+        MostFrequent mostFrequent = new MostFrequent("file.txt");
+        mostFrequent.findMostFrequentWords(k);
+
+    }
+
     public static void main(String[] args) {
 //        DijkstraMatrixCall();
 //        DijkstraAdjacencyListCall();
-        sortCall();
+//        sortCall();
+        mostFrequentCall();
     }
 }
