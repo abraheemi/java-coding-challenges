@@ -227,17 +227,25 @@ public class Main {
         System.out.println(Arrays.toString(arr));
     }
 
-    static void mostFrequentCall() {
+    static void mostFrequentUsingHashMapCall() {
         int k = 4; // k most frequent items
         MostFrequentUsingHashMap mostFrequent = new MostFrequentUsingHashMap("file.txt");
         mostFrequent.findMostFrequentWords(k);
 
     }
 
-    public static void main(String[] args) {
+    static void mostFrequentUsingTrieCall() {
+        int k = 4;
+
+
+    }
+
+        public static void main(String[] args) {
 //        DijkstraMatrixCall();
 //        DijkstraAdjacencyListCall();
 //        sortCall();
-        mostFrequentCall();
+//        mostFrequentUsingHashMapCall();
+
+
     }
 }

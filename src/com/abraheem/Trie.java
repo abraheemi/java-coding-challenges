@@ -1,7 +1,7 @@
 package com.abraheem;
 
 public class Trie {
-    private TrieNode root;
+    private final TrieNode root;
 
     public Trie(){
         root = new TrieNode();
@@ -20,6 +20,7 @@ public class Trie {
             node = node.children[index]; // Get next node in Trie
         }
         node.isEnd = true;
+        node.frequency++;
     }
 
     public boolean search(String word){
@@ -57,8 +58,10 @@ class TrieNode{
     int ALPHABET_SIZE = 26;
     TrieNode[] children;
     boolean isEnd; // Represents end of a valid word
+    int frequency;
 
     TrieNode(){
         children = new TrieNode[ALPHABET_SIZE];
+        frequency = 0;
     }
 }
